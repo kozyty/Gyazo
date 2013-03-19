@@ -24,6 +24,7 @@ if imagefile && File.exist?(imagefile) then
 else
   system "screencapture -i \"#{tmpfile}\""
   if File.exist?(tmpfile) then
+    system "#{File.dirname(__FILE__)}/resample-dpi \"#{tmpfile}\""
     system "sips -d profile --deleteColorManagementProperties \"#{tmpfile}\""  
   end
 end
